@@ -13,7 +13,7 @@ import type { IconType } from "react-icons";
 type Status = "all" | "pending" | "completed" | "overdue";
 
 export type FiltersProps = {
-  active: Status;
+  active: string;
   onChange: (status: Status) => void;
 };
 

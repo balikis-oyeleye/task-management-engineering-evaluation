@@ -54,7 +54,6 @@ const TaskModal = () => {
   });
 
   useEffect(() => {
-    console.log("Selected Task:", selectedTask);
     if (selectedTask) {
       reset({
         title: selectedTask.title,

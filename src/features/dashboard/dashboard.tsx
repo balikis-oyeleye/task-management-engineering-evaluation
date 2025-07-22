@@ -10,6 +10,7 @@ import TaskModal from "./task-modal";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
 
   return (
     <div className={styles.container}>
@@ -18,11 +19,11 @@ const Dashboard = () => {
       <main>
         <div className={styles.searchAndFilters}>
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
-          <Filters active="all" onChange={() => {}} />
+          <Filters active={filter} onChange={(value) => setFilter(value)} />
         </div>
 
         <div className={styles.tasksWrapper}>
-          <Tasks />
+          <Tasks filter={filter} />
         </div>
       </main>
       <TaskModal />

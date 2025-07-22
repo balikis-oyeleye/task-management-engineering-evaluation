@@ -8,31 +8,35 @@ type TaskStoreState = {
   updateTask: (taskId: string, updatedTask: Partial<TaskType>) => void;
   deleteTask: (taskId: string) => void;
   selectedTask?: TaskType;
-  setSelectedTask?: (task: TaskType | undefined) => void;
-  clearSelectedTask?: () => void;
+  setSelectedTask: (task: TaskType | undefined) => void;
+  clearSelectedTask: () => void;
 };
 
 const useTaskStore = create<TaskStoreState>()(
   persist(
     (set) => ({
       tasks: [],
-      selectedTask: undefined,
-      setSelectedTask: (task) => set({ selectedTask: task }),
-      clearSelectedTask: () => set({ selectedTask: undefined }),
+
       addTask: (task) =>
         set((state) => ({
           tasks: [...state.tasks, task],
         })),
+
       updateTask: (taskId, updatedTask) =>
         set((state) => ({
           tasks: state.tasks.map((task) =>
             task.id === taskId ? { ...task, ...updatedTask } : task
           ),
         })),
+
       deleteTask: (taskId) =>
         set((state) => ({
           tasks: state.tasks.filter((task) => task.id !== taskId),
         })),
+
+      selectedTask: undefined,
+      setSelectedTask: (task) => set({ selectedTask: task }),
+      clearSelectedTask: () => set({ selectedTask: undefined }),
     }),
     {
       name: "task-management-store",

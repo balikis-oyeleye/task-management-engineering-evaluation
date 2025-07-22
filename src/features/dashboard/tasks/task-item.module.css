@@ -99,6 +99,10 @@
   flex-direction: row;
 }
 
+.actions button {
+  padding: 0;
+}
+
 @media (min-width: 640px) {
   .actions {
     display: flex;
