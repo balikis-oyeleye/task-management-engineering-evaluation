@@ -1,6 +1,8 @@
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { IoSunny } from "react-icons/io5";
-import styles from "../../styles/header.module.css";
+import styles from "./header.module.css";
+import Button from "../../ui/button/button";
+import { FiPlus } from "react-icons/fi";
 
 const Header = () => {
   return (
@@ -12,9 +14,15 @@ const Header = () => {
           <p>Organize and manage your tasks</p>
         </div>
       </div>
-      <button>
-        <IoSunny />
-      </button>
+      <div className={styles.headerCta}>
+        <Button variant="text">
+          <IoSunny />
+        </Button>
+        <Button>
+          <FiPlus size={16} />
+          <span>New Task</span>
+        </Button>
+      </div>
     </header>
   );
 };

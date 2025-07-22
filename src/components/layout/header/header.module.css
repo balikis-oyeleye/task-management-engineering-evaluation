@@ -4,6 +4,7 @@
   align-items: center;
   margin-top: 1.5rem;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .taskLogo {
@@ -32,6 +33,12 @@
 
 .header svg {
   font-size: 1.25rem;
+}
+
+.headerCta {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 @media (min-width: 640px) {

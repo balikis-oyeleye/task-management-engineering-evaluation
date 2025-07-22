@@ -1,0 +1,57 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+.button span {
+  background-color: transparent;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.primary {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.text {
+  background-color: transparent;
+  color: var(--white);
+  font-weight: 500;
+}
+.text:hover {
+  background-color: transparent;
+  color: var(--white-800);
+  font-weight: 500;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
