@@ -12,10 +12,12 @@
   margin-bottom: 2rem;
 }
 
-.searchAndFilters {
+.searchAndFilters,
+.tasksWrapper {
   background-color: var(--black-800);
   border-radius: 8px;
   padding: 2rem 1rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 640px) {

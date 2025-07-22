@@ -3,6 +3,7 @@ import Header from "./components/layout/header/header";
 import { useState } from "react";
 import Search from "./components/ui/search/search";
 import Filters from "./components/general/filters/filters";
+import Tasks from "./components/general/tasks/tasks";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -15,6 +16,10 @@ const App = () => {
         <div className={styles.searchAndFilters}>
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
           <Filters active="all" onChange={() => {}} />
+        </div>
+
+        <div className={styles.tasksWrapper}>
+          <Tasks />
         </div>
       </main>
     </div>
