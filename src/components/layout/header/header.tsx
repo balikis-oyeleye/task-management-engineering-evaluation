@@ -20,7 +20,7 @@ const Header = () => {
         </Button>
         <Button>
           <FiPlus size={16} />
-          <span>New Task</span>
+          <span>New New Task</span>
         </Button>
       </div>
     </header>
