@@ -1,7 +1,7 @@
-import Button from "../../ui/button/button";
+import Button from "../../../components/ui/button/button";
+import { filterOptions } from "../service/data";
+import type { FiltersProps } from "../service/type";
 import styles from "./filters.module.css";
-import type { FiltersProps } from "./type";
-import { filterOptions } from "./data";
 
 const Filters = ({ active, onChange }: FiltersProps) => {
   return (

@@ -2,10 +2,10 @@ import styles from "./task-item.module.css";
 import { TbGripVertical } from "react-icons/tb";
 import { FaRegCircle } from "react-icons/fa";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import Button from "../../ui/button/button";
 import { IoPencilSharp } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
-import type { TaskType } from "./type";
+import type { TaskType } from "../service/type";
+import Button from "../../../components/ui/button/button";
 
 const TaskItem = (task: TaskType) => {
   const formatDate = (date: string) =>

@@ -1,8 +1,8 @@
 import { FiPlus } from "react-icons/fi";
-import Button from "../../ui/button/button";
 import TaskItem from "./task-item";
 import styles from "./tasks.module.css";
 import { PiEmpty } from "react-icons/pi";
+import Button from "../../../components/ui/button/button";
 
 const Tasks = () => {
   const tasks = [

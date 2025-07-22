@@ -1,8 +1,8 @@
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { IoSunny } from "react-icons/io5";
 import styles from "./header.module.css";
-import Button from "../../ui/button/button";
 import { FiPlus } from "react-icons/fi";
+import Button from "../../../components/ui/button/button";
 
 const Header = () => {
   return (
