@@ -1,11 +1,11 @@
 export type TaskType = {
   id: string;
   title: string;
-  description: string;
-  status: "pending" | "completed" | "canceled";
+  description?: string;
+  status: string;
   dueDate: string;
   createdAt: string;
-  priority: "low" | "medium" | "high";
+  priority: string;
 };
 
 import type { IconType } from "react-icons";
@@ -22,4 +22,9 @@ export type FilterOption = {
   value: Status;
   icon: IconType;
   count: number;
+};
+
+export type ModalState = {
+  toggleModal: () => void;
+  isOpen: boolean;
 };

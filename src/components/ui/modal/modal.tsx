@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { IoClose } from "react-icons/io5";
-import styles from "./Modal.module.css";
+import styles from "./modal.module.css";
 import type { ReactNode } from "react";
 
 type ModalProps = {
@@ -8,7 +8,6 @@ type ModalProps = {
   onOpenChange?: (open: boolean) => void;
   trigger?: ReactNode;
   title?: string;
-  description?: string;
   children: ReactNode;
 };
 
@@ -17,7 +16,6 @@ const Modal = ({
   onOpenChange,
   trigger,
   title,
-  description,
   children,
 }: ModalProps) => {
   return (
@@ -29,11 +27,6 @@ const Modal = ({
         <Dialog.Content className={styles.content}>
           {title && (
             <Dialog.Title className={styles.title}>{title}</Dialog.Title>
-          )}
-          {description && (
-            <Dialog.Description className={styles.description}>
-              {description}
-            </Dialog.Description>
           )}
 
           <div className={styles.body}>{children}</div>

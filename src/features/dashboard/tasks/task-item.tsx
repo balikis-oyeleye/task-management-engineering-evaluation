@@ -6,6 +6,8 @@ import { IoPencilSharp } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import type { TaskType } from "../service/type";
 import Button from "../../../components/ui/button/button";
+import useModalStore from "../store/modal-store";
+import useTaskStore from "../store/task-store";
 
 const TaskItem = (task: TaskType) => {
   const formatDate = (date: string) =>
@@ -15,14 +17,29 @@ const TaskItem = (task: TaskType) => {
       day: "numeric",
     });
 
+  const toggleModal = useModalStore((state) => state.toggleModal);
+  const { setSelectedTask, deleteTask, updateTask } = useTaskStore(
+    (state) => state
+  );
+
+  const handleEdit = () => {
+    toggleModal();
+    setSelectedTask?.(task);
+  };
+
+  const handleStatusChange = () => {
+    const newStatus = task.status === "completed" ? "pending" : "completed";
+    updateTask?.(task.id, { ...task, status: newStatus });
+  };
+
   return (
     <div className={styles.taskItem}>
       <TbGripVertical className={styles.dragHandle} />
 
       <div className={styles.content}>
-        <Button variant="text">
+        <Button variant="text" onClick={handleStatusChange}>
           {task.status === "completed" ? (
-            <IoIosCheckmarkCircle />
+            <IoIosCheckmarkCircle color="#90EE90" />
           ) : (
             <FaRegCircle />
           )}
@@ -43,10 +60,10 @@ const TaskItem = (task: TaskType) => {
       </div>
 
       <div className={styles.actions}>
-        <Button variant="text">
+        <Button variant="text" onClick={handleEdit}>
           <IoPencilSharp />
         </Button>
-        <Button variant="text">
+        <Button variant="text" onClick={() => deleteTask?.(task.id)}>
           <MdDelete />
         </Button>
       </div>

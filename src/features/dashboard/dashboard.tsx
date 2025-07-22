@@ -6,6 +6,7 @@ import Search from "../../components/ui/search/search";
 import Header from "./header/header";
 import Filters from "./filters/filters";
 import Tasks from "./tasks/tasks";
+import TaskModal from "./task-modal";
 
 const Dashboard = () => {
   const [search, setSearch] = useState("");
@@ -19,21 +20,12 @@ const Dashboard = () => {
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
           <Filters active="all" onChange={() => {}} />
         </div>
-        {/* <Modal
-          trigger={<Button variant="primary">Open Modal</Button>}
-          title="Edit Task"
-          description="Update your task information below."
-        >
-          <form>
-            <input type="text" placeholder="Task Title" />
-            <br />
-            <button type="submit">Save</button>
-          </form>
-        </Modal> */}
+
         <div className={styles.tasksWrapper}>
           <Tasks />
         </div>
       </main>
+      <TaskModal />
     </div>
   );
 };

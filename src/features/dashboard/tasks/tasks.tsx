@@ -3,33 +3,17 @@ import TaskItem from "./task-item";
 import styles from "./tasks.module.css";
 import { PiEmpty } from "react-icons/pi";
 import Button from "../../../components/ui/button/button";
+import useModalStore from "../store/modal-store";
+import useTaskStore from "../store/task-store";
 
 const Tasks = () => {
-  const tasks = [
-    {
-      id: "unique-id",
-      title: "Task title",
-      description: "Task description",
-      status: "pending" as "pending" | "completed" | "canceled",
-      dueDate: "2025-07-25",
-      createdAt: "2025-07-20T10:00:00Z",
-      priority: "low" as "low" | "medium" | "high",
-    },
-    {
-      id: "uniqua-id",
-      title: "Task title",
-      description: "Task description",
-      status: "pending" as "pending" | "completed" | "canceled",
-      dueDate: "2025-07-25",
-      createdAt: "2025-07-20T10:00:00Z",
-      priority: "low" as "low" | "medium" | "high",
-    },
-  ];
+  const toggleModal = useModalStore((state) => state.toggleModal);
+  const tasks = useTaskStore((state) => state.tasks);
 
   return (
     <div>
       <div className={styles.header}>
-        <h2>Tasks (2)</h2>
+        <h2>Tasks ({tasks.length})</h2>
         {tasks.length !== 0 && <p>Drag to reorder tasks</p>}
       </div>
       <div className={styles.taskList}>
@@ -42,7 +26,7 @@ const Tasks = () => {
             <PiEmpty size={48} />
             <h3>No tasks found</h3>
             <p>You don't have any tasks yet.Create a new task!</p>
-            <Button>
+            <Button onClick={toggleModal}>
               <FiPlus size={16} />
               <span>New New Task</span>
             </Button>

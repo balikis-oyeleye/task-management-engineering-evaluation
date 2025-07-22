@@ -3,8 +3,11 @@ import { IoSunny } from "react-icons/io5";
 import styles from "./header.module.css";
 import { FiPlus } from "react-icons/fi";
 import Button from "../../../components/ui/button/button";
+import useModalStore from "../store/modal-store";
 
 const Header = () => {
+  const toggleModal = useModalStore((state) => state.toggleModal);
+
   return (
     <header className={styles.header}>
       <div>
@@ -18,7 +21,7 @@ const Header = () => {
         <Button variant="text">
           <IoSunny />
         </Button>
-        <Button>
+        <Button onClick={toggleModal}>
           <FiPlus size={16} />
           <span>New New Task</span>
         </Button>
