@@ -23,7 +23,7 @@ const Dashboard = () => {
         </div>
 
         <div className={styles.tasksWrapper}>
-          <Tasks filter={filter} />
+          <Tasks filter={filter} search={search} />
         </div>
       </main>
       <TaskModal />

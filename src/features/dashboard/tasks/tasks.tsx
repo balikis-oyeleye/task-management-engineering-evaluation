@@ -9,26 +9,43 @@ import { today } from "../service/utils";
 
 interface TaskProps {
   filter: string;
+  search: string;
 }
 
-const Tasks = ({ filter }: TaskProps) => {
+const Tasks = ({ filter, search }: TaskProps) => {
   const toggleModal = useModalStore((state) => state.toggleModal);
   const tasks = useTaskStore((state) => state.tasks);
 
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "all") return true;
-    if (filter === "pending") return task.status === "pending";
-    if (filter === "completed") return task.status === "completed";
-    if (filter === "overdue") {
-      return task.status === "pending" && task.dueDate < today();
+    let matchesFilter = true;
+
+    switch (filter) {
+      case "pending":
+        matchesFilter = task.status === "pending";
+        break;
+      case "completed":
+        matchesFilter = task.status === "completed";
+        break;
+      case "overdue":
+        matchesFilter = task.status === "pending" && task.dueDate < today();
+        break;
+      case "all":
+      default:
+        matchesFilter = true;
+        break;
     }
-    return true;
+
+    const matchesSearch =
+      task.title.toLowerCase().includes(search) ||
+      task.description?.toLowerCase().includes(search);
+
+    return matchesFilter && matchesSearch;
   });
 
   return (
     <div>
       <div className={styles.header}>
-        <h2>Tasks ({tasks.length})</h2>
+        <h2>Tasks ({filteredTasks.length})</h2>
         {tasks.length !== 0 && <p>Drag to reorder tasks</p>}
       </div>
       <div className={styles.taskList}>

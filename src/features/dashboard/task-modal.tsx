@@ -9,6 +9,7 @@ import { taskDataSchema, type TaskDataType } from "./service/schema";
 import { v4 as uuidv4 } from "uuid";
 import useTaskStore from "./store/task-store";
 import { useEffect } from "react";
+import { today } from "./service/utils";
 
 const TaskModal = () => {
   const { isOpen, toggleModal } = useModalStore((state) => state);
@@ -87,7 +88,7 @@ const TaskModal = () => {
             <input
               type="date"
               id="dueDate"
-              min={new Date().toISOString().split("T")[0]}
+              min={today()}
               {...register("dueDate")}
             />
           </label>

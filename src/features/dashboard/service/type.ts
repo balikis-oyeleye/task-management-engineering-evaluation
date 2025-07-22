@@ -28,3 +28,8 @@ export type ModalState = {
   toggleModal: () => void;
   isOpen: boolean;
 };
+
+export type ThemeStore = {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+};
