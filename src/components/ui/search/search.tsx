@@ -1,4 +1,4 @@
-import styles from "./Search.module.css";
+import styles from "./search.module.css";
 import { FaSearch } from "react-icons/fa";
 
 type SearchProps = {
