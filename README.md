@@ -14,6 +14,7 @@ A minimal, responsive and customizable task management dashboard built for organ
     - [Quick Start](#quick-start)
   - [🏗️ Built With](#️-built-with)
   - [📁 Folder Structure](#-folder-structure)
+  - [🏗️ Architectural Decisions](#️-architectural-decisions)
 
 ## ✨ Features
 
@@ -107,3 +108,10 @@ npm run dev
     └── vite-env.d.ts
 ```
 
+
+
+## 🏗️ Architectural Decisions
+- Used co-location for folder structure.
+- Zustand for state management due to its simplicity and persistence capabilities.
+- React Hook Form + Zod for form validation.
+- Radix UI for accessible UI components.
