@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import useTaskStore from "./store/task-store";
 import { useEffect } from "react";
 import { today } from "./service/utils";
+import { toast } from "sonner";
 
 const TaskModal = () => {
   const { isOpen, toggleModal } = useModalStore((state) => state);
@@ -41,12 +42,15 @@ const TaskModal = () => {
         id: selectedTask.id,
         createdAt: selectedTask.createdAt,
       });
+      toast.success("Task updated successfully");
     } else {
       addTask({
         ...data,
         createdAt: new Date().toISOString(),
         id: uuidv4(),
       });
+
+      toast.success("Task Created successfully");
     }
 
     clearSelectedTask?.();
