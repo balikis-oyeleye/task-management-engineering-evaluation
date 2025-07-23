@@ -10,6 +10,7 @@ type TaskStoreState = {
   selectedTask?: TaskType;
   setSelectedTask: (task: TaskType | undefined) => void;
   clearSelectedTask: () => void;
+  reorderTasks: (newTaskOrder: TaskType[]) => void;
 };
 
 const useTaskStore = create<TaskStoreState>()(
@@ -37,6 +38,7 @@ const useTaskStore = create<TaskStoreState>()(
       selectedTask: undefined,
       setSelectedTask: (task) => set({ selectedTask: task }),
       clearSelectedTask: () => set({ selectedTask: undefined }),
+      reorderTasks: (newTaskOrder) => set({ tasks: newTaskOrder }),
     }),
     {
       name: "task-management-store",

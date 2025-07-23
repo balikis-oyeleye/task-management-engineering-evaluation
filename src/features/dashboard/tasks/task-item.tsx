@@ -8,14 +8,25 @@ import type { TaskType } from "../service/type";
 import Button from "../../../components/ui/button/button";
 import useModalStore from "../store/modal-store";
 import useTaskStore from "../store/task-store";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { formatDate } from "../service/utils";
 
 const TaskItem = (task: TaskType) => {
-  const formatDate = (date: string) =>
-    new Date(date).toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: task.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
 
   const toggleModal = useModalStore((state) => state.toggleModal);
   const { setSelectedTask, deleteTask, updateTask } = useTaskStore(
@@ -33,8 +44,13 @@ const TaskItem = (task: TaskType) => {
   };
 
   return (
-    <div className={styles.taskItem}>
-      <TbGripVertical className={styles.dragHandle} />
+    <div ref={setNodeRef} style={style} className={styles.taskItem}>
+      <TbGripVertical
+        className={styles.dragHandle}
+        {...attributes}
+        {...listeners}
+        style={{ cursor: isDragging ? "grabbing" : "grab" }}
+      />
 
       <div className={styles.content}>
         <Button variant="text" onClick={handleStatusChange}>

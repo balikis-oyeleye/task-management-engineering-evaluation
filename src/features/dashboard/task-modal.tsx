@@ -54,6 +54,12 @@ const TaskModal = () => {
     reset();
   });
 
+  const onModalClose = () => {
+    clearSelectedTask?.();
+    toggleModal();
+    reset();
+  };
+
   useEffect(() => {
     if (selectedTask) {
       reset({
@@ -63,13 +69,20 @@ const TaskModal = () => {
         priority: selectedTask.priority,
         status: selectedTask.status,
       });
+    } else {
+      reset({
+        title: "",
+        description: "",
+        dueDate: today(),
+        status: "pending",
+      });
     }
   }, [selectedTask, reset]);
 
   return (
     <Modal
       open={isOpen}
-      onOpenChange={toggleModal}
+      onOpenChange={onModalClose}
       title={selectedTask ? "Edit Task" : "Create Task"}
     >
       <form className={styles.form} onSubmit={onSubmit}>
