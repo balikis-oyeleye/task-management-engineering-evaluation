@@ -33,3 +33,8 @@ export type ThemeStore = {
   theme: "light" | "dark";
   toggleTheme: () => void;
 };
+
+export type TaskProps = {
+  filter: string;
+  search: string;
+};

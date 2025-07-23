@@ -21,11 +21,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-
-interface TaskProps {
-  filter: string;
-  search: string;
-}
+import type { TaskProps } from "../service/type";
 
 const Tasks = ({ filter, search }: TaskProps) => {
   const toggleModal = useModalStore((state) => state.toggleModal);
