@@ -5,6 +5,7 @@ import { FiPlus } from "react-icons/fi";
 import Button from "../../../components/ui/button/button";
 import useModalStore from "../store/modal-store";
 import useThemeStore from "../store/theme-store";
+import { useEffect } from "react";
 
 const Header = () => {
   const toggleModal = useModalStore((state) => state.toggleModal);
@@ -16,7 +17,14 @@ const Header = () => {
     document.documentElement.setAttribute("data-portfolio-color-scheme", theme);
   };
 
-  document.documentElement.setAttribute("data-portfolio-color-scheme", theme);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.setAttribute(
+        "data-portfolio-color-scheme",
+        theme
+      );
+    }
+  }, [theme]);
 
   return (
     <header className={styles.header}>
